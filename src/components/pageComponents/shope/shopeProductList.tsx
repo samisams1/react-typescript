@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from '@apollo/client';
 //import Button from '../../Button';
-import { Grid, Typography } from '@mui/material';
+import { Grid} from '@mui/material';
 import MUIDataTable from 'mui-datatables';
 //import Popup from '../../Popup';
 //import PatientEditForm from '../product/ProductEditForm';
@@ -10,9 +10,6 @@ import { SHOPE_PRODUCTS } from '../../../graphql/shopeProduct';
 import Spinner from '../../Spinner';
 
 export const ShopeProductList = () => {
-    const [openPopup,setOpenPopup] =useState(false);
-    const  [openCofirmPopup,setOpenConfirimPopup]=useState(false);
-    const [newData,setNewData]=useState("");
     const {loading,error,data} = useQuery(SHOPE_PRODUCTS);
     if(loading) return <Spinner/>
     if (error) return <p>{error.message}</p>
