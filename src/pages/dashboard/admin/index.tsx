@@ -1,11 +1,11 @@
 import React from 'react';
 import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
 import { Helmet } from 'react-helmet';
-import { ShopeProduct } from '../../product/shope/shopeProduct';
 import { StoreProducts } from '../../../components/pageComponents/dashboard/store/TotalProducts';
 import { TotalProducts } from '../../../components/pageComponents/dashboard/TotalProducts';
 import { TotalOrders } from '../../../components/pageComponents/dashboard/TotalOrders';
 import { TotalUser } from '../../../components/pageComponents/dashboard/TotalUsers';
+import { ShopeProducts } from '../../../components/pageComponents/dashboard/sale/TotalProducts';
 
 export const AdminDashboard = () => (
   <>
@@ -31,7 +31,11 @@ export const AdminDashboard = () => (
             sm={6}
             lg={3}
           >
-            <ShopeProduct
+            <ShopeProducts
+              difference={16}
+              positive={false}
+              sx={{ height: '100%' }}
+              value="1.6k"
             />
           </Grid>
           <Grid

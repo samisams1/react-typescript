@@ -10,7 +10,7 @@ import Spinner from '../../../Spinner';
 import { ShoppingCartOutlined } from '@mui/icons-material';
 
 export const ShopeProducts = (props:any) => {
-  const { difference, positive = false, sx, value } = props;
+  const { sx } = props;
   const {loading,error,data} = useQuery(SALE_TOTAL_PRODUCT_QUERY);
   if(loading) return <Spinner/>
   if (error) return <p>{error.message}</p>
