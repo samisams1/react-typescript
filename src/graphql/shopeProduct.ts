@@ -1,8 +1,13 @@
 import gql from "graphql-tag"
 export const SHOPE_PRODUCTS = gql`
 query{
-  products{
-    id
+    shopeProducts{
+      id
+      product{
+        name
+        price
+      }
+      quantity
+    }
   }
-}
 `
