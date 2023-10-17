@@ -8,13 +8,14 @@ import Sales from './pages/sale/Sales';
 import User from './pages/user/User';
 import Produuct from './pages/product/shope/product';
 import Login from './pages/login/Login';
+import Dashboard from './pages/dashboard';
 
 
 const RoutePage: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<h1>Home Page</h1>} />
+        <Route path="/" element={<Dashboard/>} />
         <Route path="/product" element={<Produuct />} />
 
         <Route path="/order" element={<Order />} />

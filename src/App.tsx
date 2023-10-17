@@ -6,6 +6,7 @@ import { getMainDefinition } from '@apollo/client/utilities';
 import RoutePage from './RoutePage';
 //import UserProvider from './components/auth/UserContext';
 import { initWebSocket } from './websocket';
+import UserProvider from './auth/UserContext';
 
 
 const App: React.FC = () => {
@@ -62,9 +63,11 @@ const App: React.FC = () => {
   }, []);
 
   return (
+    <UserProvider>
         <ApolloProvider client={client}>
         <RoutePage /> 
         </ApolloProvider>
+    </UserProvider>
   );
 };
 
