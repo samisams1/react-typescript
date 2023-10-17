@@ -14,8 +14,8 @@ export const ShopeProductList = () => {
     if(loading) return <Spinner/>
     if (error) return <p>{error.message}</p>
     console.log(data)
-    const patientVital = data.shopeProducts.map((row:SaleInterface)=>(
-        [row.id,row.product.name,row.product.price,row.quantity]
+    const patientVital = data.products.map((row:SaleInterface)=>(
+        [row.id]
     ))
     const styles = {
       coloredCell: {
