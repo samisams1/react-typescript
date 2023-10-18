@@ -7,7 +7,7 @@ import Spinner from '../../Spinner';
 import { COUNT_SALE_QUERY } from '../../../graphql/Sale';
 
 export const DailyTotalSales = (props:any) => {
-  const { difference, positive = false, sx, value } = props;
+  const {  sx } = props;
   const {loading,error,data} = useQuery(COUNT_SALE_QUERY);
   if(loading) return <Spinner/>
   if (error) return <p>{error.message}</p>
