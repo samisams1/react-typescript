@@ -1,4 +1,4 @@
-/*import React, { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { gql, useMutation } from '@apollo/client';
 import { Alert, CardActions, CardContent, CardHeader, Divider, Grid, Stack } from '@mui/material';
 import { USER_QUERY } from '../../../../graphql/Users';
@@ -16,7 +16,7 @@ export interface ChangePass {
 }
 
 const CHANGE_PASSWORD_MUTATION = gql`
- mutation ChangePassword($userId: Float!, $changePasswordInput: ChangePasswordInput!) {
+  mutation ChangePassword($userId: Float!, $changePasswordInput: ChangePasswordInput!) {
     changePassword(userId: $userId, changePasswordInput: $changePasswordInput) {
       id
     }
@@ -32,16 +32,12 @@ const ChangeNewPassword = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const { currentUser } = useContext(UserContext);
-  
-  if (!currentUser) {
-    return <Spinner />;
-  }
 
   const initialFValues: ChangePass = {
     currentPassword: '',
     newPassword: '',
     confirmPassword: '',
-    userId: currentUser.id,
+    userId:1,
   };
 
   const validate = (fieldValues: ChangePass = values): boolean => {
@@ -85,13 +81,14 @@ const ChangeNewPassword = () => {
         });
         setSuccessMessage('Password changed successfully.');
         resetForm();
-      } catch (error:any) {
+      } catch (error: any) {
         setErrorMessage(`Error changing password: ${error.message}`);
       }
     }
-  }
+  };
 
   return (
+    <>
     <Form onSubmit={handleSubmit}>
       <Grid container>
         <Grid item xs={12}>
@@ -131,29 +128,27 @@ const ChangeNewPassword = () => {
           </CardActions>
         </Grid>
       </Grid>
-{successMessage && (
-              <Alert variant="outlined" severity="info" sx={{ mx: 'auto', mb: 2, width: '50%', textAlign: 'center' }}>
-                {successMessage}
-              </Alert>
-            )}
-            {errorMessage && (
-              <Alert variant="outlined" severity="error" sx={{ mx: 'auto', mb: 2, width: '50%', textAlign: 'center' }}>
-                {errorMessage}
-              </Alert>
-            )}
-
+      {successMessage && (
+        <Alert
+          variant="outlined"
+          severity="info"
+          sx={{ mx: 'auto', mb: 2, width: '50%', textAlign: 'center' }}
+        >
+          {successMessage}
+        </Alert>
+      )}
+      {errorMessage && (
+        <Alert
+          variant="outlined"
+          severity="error"
+          sx={{ mx: 'auto', mb: 2, width: '50%', textAlign: 'center' }}
+        >
+          {errorMessage}
+        </Alert>
+      )}
     </Form>
-  );
-};
-
+    {currentUser ? null : <Spinner />}
+  </>
+);
+      }
 export default ChangeNewPassword;
-*/
-import React from 'react'
-
-const ChangeNewPassword = () => {
-  return (
-    <div>ChangeNewPassword</div>
-  )
-}
-
-export default ChangeNewPassword
