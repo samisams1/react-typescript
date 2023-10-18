@@ -1,8 +1,9 @@
 import React from 'react'
+import ChangeNewPassword from '../../components/pageComponents/account/changePassword/ChangeNewPassword'
 
 const ChangePassword = () => {
   return (
-    <div>ChangePassword</div>
+    <div><ChangeNewPassword/></div>
   )
 }
 

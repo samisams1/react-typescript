@@ -3,7 +3,6 @@ import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
 //import { ShopeProducts } from '../../../components/scensComponents/dashboard/sale/TotalProducts';
 //import { TotalSales } from '../../../components/scensComponents/dashboard/TotalSales';
 import { Helmet } from 'react-helmet';
-import { ShopeProduct } from '../../product/shope/shopeProduct';
 
 export const SellerDashboard = () => (
   <>
@@ -29,22 +28,15 @@ export const SellerDashboard = () => (
             sm={6}
             lg={6}
           >
-            <ShopeProduct
-           //   difference={16}
-            //  positive={false}
-            //  sx={{ height: '100%' }}
-            //  value="1.6k"
-            />
+            ShopeProduct
           </Grid>
           <Grid
             xs={12}
             sm={6}
             lg={6}
           >
-            <ShopeProduct
-           //   sx={{ height: '100%' }}
-            //  value="$15k"
-            />
+            
+            ShopeProduct
           </Grid>
          
         </Grid>
