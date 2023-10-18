@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ShopeProduct } from './pages/product/shope/shopeProduct';
-import Store from './pages/store/Store';
 import Sales from './pages/sale/Sales';
 import Produuct from './pages/product/shope/product';
 import Login from './pages/login/Login';
@@ -9,6 +8,7 @@ import Dashboard from './pages/dashboard';
 import { Category } from './pages/category/Category';
 import { Order } from './pages/order';
 import { User } from './pages/user/User';
+import { Store } from './pages/store/Store';
 
 
 const RoutePage: React.FC = () => {

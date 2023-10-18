@@ -1,9 +1,10 @@
 import React from 'react';
 import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
-import PageHeader from '../../components/PageHeader';
 import { Helmet } from 'react-helmet';
+import PageHeader from '../../PageHeader';
 import { PeopleOutlineTwoTone } from '@mui/icons-material';
-import { StoreList } from '../../components/pageComponents/store/StoreList';
+import { StoreList } from './StoreList';
+
 export const Store = () => (
   <>
     <Helmet>
@@ -33,8 +34,7 @@ export const Store = () => (
       subTitle ={"this Page shows The Product Avalible i the Store  Product"}
       icon={<PeopleOutlineTwoTone fontSize='large'/>}
       />
-         
-            <StoreList/>   
+     <StoreList/>   
           </Grid>
         </Grid>
       </Container>
