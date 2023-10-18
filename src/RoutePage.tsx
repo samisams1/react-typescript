@@ -13,6 +13,7 @@ import { Profile } from './pages/profile/Profile';
 import { Product } from './pages/product/shope/Product';
 import { RequestHistory } from './pages/Request/RequestHistory';
 import { ShopeProduct } from './pages/product/shope/ShopeProduct';
+import { Sales } from './pages/sale/Sales';
 
 const RoutePage: React.FC = () => {
   return (
@@ -30,11 +31,11 @@ const RoutePage: React.FC = () => {
 
         <Route path="/shope" element={<ShopeProduct />} />
 
-        <Route path="/sale" element={<Order />} />
+        <Route path="/sale" element={<Sale />} />
 
         <Route path="/user" element={<User />} />
 
-        <Route path="/sales" element={<Sale />} />
+        <Route path="/sales" element={<Sales />} />
 
         <Route path="/store" element={<Store />} />
 
