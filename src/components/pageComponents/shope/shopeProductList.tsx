@@ -1,14 +1,10 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-//import Button from '../../Button';
-import { Grid} from '@mui/material';
+import { Box, Container, Grid} from '@mui/material';
 import MUIDataTable from 'mui-datatables';
-//import Popup from '../../Popup';
-//import PatientEditForm from '../product/ProductEditForm';
 import { SaleInterface } from '../../../interface/interfaces';
 import { SHOPE_PRODUCTS } from '../../../graphql/shopeProduct';
 import Spinner from '../../Spinner';
-
 export const ShopeProductList = () => {
     const {loading,error,data} = useQuery(SHOPE_PRODUCTS);
     if(loading) return <Spinner/>
@@ -62,17 +58,34 @@ export const ShopeProductList = () => {
         }, 
       ];
       return (
-        <Grid>
-             <MUIDataTable
-               title="Admin"
+        <Box
+      component="main"
+      sx={{
+        flexGrow: 1,
+        py: 8
+      }}
+    >
+      <Container maxWidth="xl">
+        <Grid
+          container
+          spacing={3}
+        >
+          <Grid
+            xs={12}
+            md={12}
+            lg={12}
+          >   
+            <MUIDataTable
+               title="shope Product"
                data={patientVital}
                columns={columns}
                options={{
                  filterType: "checkbox",
                }}
              />
-               samisasm
-        
+          </Grid>
         </Grid>
+      </Container>
+    </Box>
       )
 }

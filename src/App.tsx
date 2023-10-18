@@ -33,8 +33,8 @@ const App: React.FC = () => {
     };
   });
 
- // const httpLink = new HttpLink({ uri: 'https://54.172.139.217/graphql' });
- const httpLink = new HttpLink({ uri: 'http://localhost:5000/graphql' });
+  //const httpLink = new HttpLink({ uri: 'https://54.172.139.217/graphql' });
+const httpLink = new HttpLink({ uri: 'http://localhost:5000/graphql' });
   const wsLink = new WebSocketLink({
    // uri: 'ws://54.172.139.217:5000/graphql',
    uri: 'wss://54.172.139.217:5000/graphql',

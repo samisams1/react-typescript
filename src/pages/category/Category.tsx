@@ -8,13 +8,11 @@ import { CategoryList } from '../../components/category/CategoryList';
 import { CategoryForm } from '../../components/category/CategoryForm';
 import { Toolbar } from '../../components/toolbar';
 import PageHeader from '../../components/PageHeader';
-
-
 export const Category = () => (
   <>
     <Helmet>
       <title>
-        Overview | Inventory
+        Category | Seblewongale
       </title>
     </Helmet>
     <Box

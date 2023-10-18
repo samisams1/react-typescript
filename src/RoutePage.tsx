@@ -10,9 +10,9 @@ import Sale from './pages/sale';
 import Setting from './pages/setting/Setting';
 import Request from './pages/Request';
 import { Profile } from './pages/profile/Profile';
-import { ShopeProductList } from './components/pageComponents/shope/shopeProductList';
 import { Product } from './pages/product/shope/Product';
 import { RequestHistory } from './pages/Request/RequestHistory';
+import { ShopeProduct } from './pages/product/shope/ShopeProduct';
 
 const RoutePage: React.FC = () => {
   return (
@@ -28,7 +28,7 @@ const RoutePage: React.FC = () => {
 
         <Route path="/category" element={<Category />} />
 
-        <Route path="/shope" element={<ShopeProductList />} />
+        <Route path="/shope" element={<ShopeProduct />} />
 
         <Route path="/sale" element={<Order />} />
 
