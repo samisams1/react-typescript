@@ -46,7 +46,7 @@ if(!currentUser){
   if (loading) return <Spinner />;
   if (error) return <p>Error: {error.message}</p>;
   const order = data.order;
-
+console.log(formValues);
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormValues((prevValues) => ({

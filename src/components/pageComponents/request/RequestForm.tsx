@@ -15,15 +15,12 @@ interface ReplenishmentFormProps {
 
 const RequestForm: React.FC<ReplenishmentFormProps> = ({ onSubmit }) => {
   const [products, setProducts] = useState<Product[]>([{ productId: '', quantity: '' }]);
-  const [selectedProducts, setSelectedProducts] = useState([]);
 
 
   const { loading, error, data } = useQuery(PRODUCT_QUERY);
   if (loading) return <p>Loading...</p>
 	if (error) return <p>{error.message}</p>
-    const ProductList = data.products.map((row:productInterface)=>(
-      [row.id,row.barcode,row.image,row.name,row.price,row.description]
-  ))
+   
 
   const handleProductNameChange = (index: number, value: string) => {
     const updatedProducts = [...products];

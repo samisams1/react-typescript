@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material'
 import { Helmet } from 'react-helmet';
+import RequestHistoryList from '../../components/pageComponents/request/RequestHistoryList';
 
 export const RequestHistory = () => (
   <>
@@ -26,8 +27,7 @@ export const RequestHistory = () => (
             md={12}
             lg={12}
           >
-        
-            RequestHistory
+          <RequestHistoryList/>   
           </Grid>
         </Grid>
       </Container>
