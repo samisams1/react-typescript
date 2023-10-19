@@ -1,5 +1,5 @@
 import React, { useRef, useState, useContext } from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { alpha } from '@mui/material/styles';
 import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Button } from '@mui/material';
@@ -20,7 +20,7 @@ const MENU_OPTIONS = [
 // ----------------------------------------------------------------------
 export default function AccountPopover() {
   const anchorRef = useRef<HTMLButtonElement>(null);
-  const navigate = useNavigate();
+ // const navigate = useNavigate();
   const { currentUser } = useContext(UserContext);
   const [open, setOpen] = useState<HTMLButtonElement | null>(null);
   //const currentUser = AuthService.getCurrentUser();
