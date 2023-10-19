@@ -7,6 +7,7 @@ import RoutePage from './RoutePage';
 //import UserProvider from './components/auth/UserContext';
 import { initWebSocket } from './websocket';
 import UserProvider from './auth/UserContext';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 
 const App: React.FC = () => {
@@ -33,8 +34,8 @@ const App: React.FC = () => {
     };
   });
 
-  //const httpLink = new HttpLink({ uri: 'https://54.172.139.217/graphql' });
-const httpLink = new HttpLink({ uri: 'http://localhost:5000/graphql' });
+const httpLink = new HttpLink({ uri: 'https://54.172.139.217/graphql' });
+//const httpLink = new HttpLink({ uri: 'http://localhost:5000/graphql' });
   const wsLink = new WebSocketLink({
    // uri: 'ws://54.172.139.217:5000/graphql',
    uri: 'wss://54.172.139.217:5000/graphql',
@@ -66,9 +67,11 @@ const httpLink = new HttpLink({ uri: 'http://localhost:5000/graphql' });
   return (
     <UserProvider>
         <ApolloProvider client={client}>
+        <Router>
         <RoutePage /> 
+        </Router>
         </ApolloProvider>
-    </UserProvider>
+     </UserProvider>
   );
 };
 
