@@ -11,7 +11,6 @@ import { UserContext, CurrentUser } from '../../../../../auth/UserContext';
 export const AccountProfileDetails = () => {
   const { currentUser } = useContext(UserContext);
   const { firstName, lastName, role, email, username } = currentUser as CurrentUser;
-
   const [values] = useState({
     firstName: firstName,
     lastName: lastName,
@@ -20,7 +19,6 @@ export const AccountProfileDetails = () => {
     username: username,
     country: 'Ethiopia'
   });
-
   const handleSubmit = () => {
     alert('samisams');
   };

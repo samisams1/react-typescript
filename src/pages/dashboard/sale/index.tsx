@@ -1,14 +1,14 @@
 import React from 'react';
 import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
-//import { ShopeProducts } from '../../../components/scensComponents/dashboard/sale/TotalProducts';
-//import { TotalSales } from '../../../components/scensComponents/dashboard/TotalSales';
 import { Helmet } from 'react-helmet';
+import { ShopeProducts } from '../../../components/pageComponents/dashboard/sale/TotalProducts';
+import { TotalSales } from '../../../components/pageComponents/dashboard/TotalSales';
 
 export const SellerDashboard = () => (
   <>
     <Helmet>
       <title>
-        Overview | Inventory
+        Dashboard | Seblewongale
       </title>
     </Helmet>
     <Box
@@ -28,15 +28,22 @@ export const SellerDashboard = () => (
             sm={6}
             lg={6}
           >
-            ShopeProduct
+            <ShopeProducts
+              difference={16}
+              positive={false}
+              sx={{ height: '100%' }}
+              value="1.6k"
+            />
           </Grid>
           <Grid
             xs={12}
             sm={6}
             lg={6}
           >
-            
-            ShopeProduct
+            <TotalSales
+              sx={{ height: '100%' }}
+              value="$15k"
+            />
           </Grid>
          
         </Grid>

@@ -7,7 +7,7 @@ import { useQuery } from '@apollo/client';
 import { COUNT_SALE_QUERY } from '../../../graphql/Sale';
 
 export const TotalSales = (props:any) => {
-  const { difference, positive = false, sx, value } = props;
+  const {  sx } = props;
   const {loading,error,data} = useQuery(COUNT_SALE_QUERY);
   if(loading) return <Spinner/>
   if (error) return <p>{error.message}</p>
