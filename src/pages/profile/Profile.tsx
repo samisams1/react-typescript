@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import PageHeader from '../../components/PageHeader';
 import { PeopleOutlineTwoTone } from '@mui/icons-material';
 import AccountProfileDetails from '../../components/pageComponents/account/changePassword/profile/AccountProfileDetails';
-import AccountProfile from '../../components/pageComponents/account/changePassword/profile/AccountProfile';
+import { AccountProfile } from '../../components/pageComponents/account/changePassword/profile/AccountProfile';
 
 export const Profile = () => (
   <>

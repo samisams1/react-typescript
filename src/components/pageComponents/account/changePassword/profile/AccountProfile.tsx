@@ -1,4 +1,4 @@
-/*import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import {
   Avatar,
   Box,
@@ -9,9 +9,8 @@ import {
   Divider,
   Typography
 } from '@mui/material';
+import { UserContext,CurrentUser } from '../../../../../auth/UserContext';
 import Spinner from '../../../../Spinner';
-import { UserContext } from '../../../../../auth/UserContext';
-
 const user = {
   avatar: '../../../../assets/sams.jpg',
   city: 'Addis Ababa',
@@ -22,16 +21,16 @@ const user = {
 };
 
 export const AccountProfile = () => {
-  const { currentUser,CurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   if (!currentUser) {
     return <Spinner />;
   }
 
-  const { username, lastName, role }: CurrentUser = currentUser;
+  const {lastName }: CurrentUser = currentUser;
 
   const handleUpload = (event:any) => {
-    const file = event.target.files[0];
+   // const file = event.target.files[0];
     // Perform the necessary upload logic here
   };
  /* const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +46,7 @@ export const AccountProfile = () => {
     if (file) {
       reader.readAsDataURL(file);
     }
-  };*//*
+  };*/
   return (
     <Card>
       <CardContent>
@@ -93,13 +92,3 @@ export const AccountProfile = () => {
     </Card>
   );
 };
-*/
-import React from 'react'
-
-const AccountProfile = () => {
-  return (
-    <div>AccountProfile</div>
-  )
-}
-
-export default AccountProfile

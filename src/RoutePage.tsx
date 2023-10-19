@@ -17,7 +17,6 @@ import Setting from './pages/setting/Setting';
 import { Profile } from './pages/profile/Profile';
 import { Sales } from './pages/sale/Sales';
 import { Store } from './components/pageComponents/store';
-import { User } from './pages/user/User';
 import Login from './pages/login/Login';
 import NotFoundPage from './pages/NotFoundPage';
 import DashboardLayout from './layoutes/DashboardLayout';
@@ -35,7 +34,7 @@ export default function RoutePage() {
               { path: '/category', element: <ProtectedRoute element={<Category />} /> },
               { path: '/shope', element: <ProtectedRoute  element={<ShopeProduct />} /> },
               { path: '/sale', element: <ProtectedRoute  element={<Sale />} /> },
-              { path: '/user', element: <ProtectedRoute  element={<User />} /> },
+             // { path: '/user', element: <ProtectedRoute  element={< />} /> },
               { path: '/store', element: <ProtectedRoute  element={<Store />} /> },
               { path: '/sales', element: <ProtectedRoute element={<Sales />} /> },
               { path: '/requestHistory', element: <ProtectedRoute element={<RequestHistory />} /> },
