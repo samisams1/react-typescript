@@ -1,13 +1,13 @@
 import * as React from 'react';
 // material
-import { styled } from '@mui/material/styles';
+//import { styled } from '@mui/material/styles';
 import { Outlet } from 'react-router-dom';
 // components
 //import Logo from '../components/Logo';
 
 // ----------------------------------------------------------------------
 
-const HeaderStyle = styled('header')(({ theme }) => ({
+/*const HeaderStyle = styled('header')(({ theme }) => ({
   top: 0,
   left: 0,
   lineHeight: 0,
@@ -17,7 +17,7 @@ const HeaderStyle = styled('header')(({ theme }) => ({
   [theme.breakpoints.up('sm')]: {
     padding: theme.spacing(5, 5, 0),
   },
-}));
+}));*/
 
 // ----------------------------------------------------------------------
 

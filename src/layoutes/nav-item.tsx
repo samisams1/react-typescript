@@ -18,7 +18,6 @@ export const NavItem = (props:any) => {
     </ListItem>
   );
 };
-
 NavItem.propTypes = {
   href: PropTypes.string,
   icon: PropTypes.node,
