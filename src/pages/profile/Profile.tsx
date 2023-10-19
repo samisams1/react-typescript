@@ -3,8 +3,8 @@ import { Box, Container, Stack, Unstable_Grid2 as Grid } from '@mui/material';
 import { Helmet } from 'react-helmet';
 import PageHeader from '../../components/PageHeader';
 import { PeopleOutlineTwoTone } from '@mui/icons-material';
-import AccountProfileDetails from '../../components/pageComponents/account/changePassword/profile/AccountProfileDetails';
 import { AccountProfile } from '../../components/pageComponents/account/changePassword/profile/AccountProfile';
+import { AccountProfileDetails } from '../../components/pageComponents/account/changePassword/profile/AccountProfileDetails';
 
 export const Profile = () => (
   <>

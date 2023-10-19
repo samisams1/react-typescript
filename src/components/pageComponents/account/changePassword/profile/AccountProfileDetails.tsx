@@ -1,5 +1,4 @@
-/*import React, { useContext }  from 'react';
-import { useCallback, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   Box,
   Card,
@@ -8,19 +7,12 @@ import {
   TextField,
   Unstable_Grid2 as Grid
 } from '@mui/material';
-import { UserContext } from '../../../../../auth/UserContext';
-import Spinner from '../../../../Spinner';
-
-
+import { UserContext, CurrentUser } from '../../../../../auth/UserContext';
 export const AccountProfileDetails = () => {
-  const { currentUser,CurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
+  const { firstName, lastName, role, email, username } = currentUser as CurrentUser;
 
-  if(!currentUser){
-    return <Spinner/>
-  }
-  const { firstName,lastName,role,email,username}: CurrentUser = currentUser;
-
-  const [values, setValues] = useState({
+  const [values] = useState({
     firstName: firstName,
     lastName: lastName,
     email: email,
@@ -28,33 +20,18 @@ export const AccountProfileDetails = () => {
     username: username,
     country: 'Ethiopia'
   });
-const handleSubmit=()=>{
-alert("samisams");
-}
-const handleChange=()=>{
-  alert("samisams");
-  }
+
+  const handleSubmit = () => {
+    alert('samisams');
+  };
   return (
-    <form
-      autoComplete="off"
-      noValidate
-      onSubmit={handleSubmit}
-    >
+    <form autoComplete="off" noValidate onSubmit={handleSubmit}>
       <Card>
-        <CardHeader
-          subheader="The information can be edited"
-          title="Profile"
-        />
+        <CardHeader subheader="The information can be edited" title="Profile" />
         <CardContent sx={{ pt: 0 }}>
           <Box sx={{ m: -1.5 }}>
-            <Grid
-              container
-              spacing={3}
-            >
-              <Grid
-                xs={12}
-                md={6}
-              >
+            <Grid container spacing={3}>
+              <Grid xs={12} md={6}>
                 <TextField
                   fullWidth
                   helperText="Please specify the first name"
@@ -64,65 +41,20 @@ const handleChange=()=>{
                   value={values.firstName}
                 />
               </Grid>
-              <Grid
-                xs={12}
-                md={6}
-              >
-                <TextField
-                  fullWidth
-                  label="Last name"
-                  name="lastName"
-                  required
-                  value={values.lastName}
-                />
+              <Grid xs={12} md={6}>
+                <TextField fullWidth label="Last name" name="lastName" required value={values.lastName} />
               </Grid>
-              <Grid
-                xs={12}
-                md={6}
-              >
-                <TextField
-                  fullWidth
-                  label="Email Address"
-                  name="email"
-                  required
-                  value={values.email}
-                />
+              <Grid xs={12} md={6}>
+                <TextField fullWidth label="Email Address" name="email" required value={values.email} />
               </Grid>
-              <Grid
-                xs={12}
-                md={6}
-              >
-                <TextField
-                  fullWidth
-                  label="Role"
-                  name="role"
-                  type="text"
-                  value={values.role}
-                />
+              <Grid xs={12} md={6}>
+                <TextField fullWidth label="Role" name="role" type="text" value={values.role} />
               </Grid>
-              <Grid
-                xs={12}
-                md={6}
-              >
-                <TextField
-                  fullWidth
-                  label="Country"
-                  name="country"
-                  required
-                  value={values.country}
-                />
+              <Grid xs={12} md={6}>
+                <TextField fullWidth label="Country" name="country" required value={values.country} />
               </Grid>
-              <Grid
-                xs={12}
-                md={6}
-              >
-                 <TextField
-                  fullWidth
-                  label="username"
-                  name="username"
-                  required
-                  value={values.username}
-                />
+              <Grid xs={12} md={6}>
+                <TextField fullWidth label="username" name="username" required value={username} />
               </Grid>
             </Grid>
           </Box>
@@ -130,13 +62,4 @@ const handleChange=()=>{
       </Card>
     </form>
   );
-};*/
-import React from 'react'
-
-function AccountProfileDetails() {
-  return (
-    <div>AccountProfileDetails</div>
-  )
-}
-
-export default AccountProfileDetails
+};
