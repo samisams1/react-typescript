@@ -1,62 +1,62 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/login/Login';
+import * as React from 'react';
+import { Navigate, useRoutes } from 'react-router-dom';
+
+import LogoOnlyLayout from './layoutes/LogoOnlyLayout';
+import ForgotPassword from './pages/account/ForgotPassword';
+import Request from "./pages/Request";
 import Dashboard from './pages/dashboard';
-import { Category } from './pages/category/Category';
+import { Report } from './pages/report/Report';
+import { RequestHistory } from './pages/Request/RequestHistory';
+import ProtectedRoute from './auth/ProtectedRoute';
+import { Product } from './pages/product/shope/Product';
 import { Order } from './pages/order';
-import { User } from './pages/user/User';
-import { Store } from './pages/store/Store';
+import { Category } from './pages/category/Category';
+import { ShopeProduct } from './pages/product/shope/ShopeProduct';
 import Sale from './pages/sale';
 import Setting from './pages/setting/Setting';
-import Request from './pages/Request';
 import { Profile } from './pages/profile/Profile';
-import { Product } from './pages/product/shope/Product';
-import { RequestHistory } from './pages/Request/RequestHistory';
-import { ShopeProduct } from './pages/product/shope/ShopeProduct';
 import { Sales } from './pages/sale/Sales';
-import { Report } from './pages/report/Report';
+import { Store } from './components/pageComponents/store';
+import { User } from './pages/user/User';
+import Login from './pages/login/Login';
+import NotFoundPage from './pages/NotFoundPage';
+import DashboardLayout from './layoutes/DashboardLayout';
+export default function RoutePage() {
 
-const RoutePage: React.FC = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Dashboard/>} />
+    return useRoutes([
+        {
+            path: '/',
+            element: <DashboardLayout />,
+            children: [
+              { path: '/', element: <ProtectedRoute  element={<Dashboard />} /> },
+              { path: '/product', element: <ProtectedRoute  element={<Product />} /> },
+              { path: '/order', element: <ProtectedRoute  element={<Order />} /> },
+              { path: '/request', element: <ProtectedRoute element={<Request />} /> },
+              { path: '/category', element: <ProtectedRoute element={<Category />} /> },
+              { path: '/shope', element: <ProtectedRoute  element={<ShopeProduct />} /> },
+              { path: '/sale', element: <ProtectedRoute  element={<Sale />} /> },
+              { path: '/user', element: <ProtectedRoute  element={<User />} /> },
+              { path: '/store', element: <ProtectedRoute  element={<Store />} /> },
+              { path: '/sales', element: <ProtectedRoute element={<Sales />} /> },
+              { path: '/requestHistory', element: <ProtectedRoute element={<RequestHistory />} /> },
+              { path: '/profile', element: <ProtectedRoute  element={<Profile />} /> },
+              { path: '/report', element: <ProtectedRoute element={<Report />} /> },
+              { path: '/setting', element: <ProtectedRoute  element={<Setting />} /> },
 
-        <Route path="/product" element={<Product />} />
+      
+            ],
+          },
+          {
+            path: '/',
+            element: <LogoOnlyLayout />,
+            children: [
+              { path: '/', element: <Navigate to="/dashboard" /> },
+              { path: 'login', element: <Login/> },
+              { path:  'forgotPassword', element:<ForgotPassword />},
+            ],
+          },
+          { path: '*', element: <NotFoundPage /> },
 
-        <Route path="/order" element={<Order />} />
+    ]);
+}
 
-        <Route path="/request" element={<Request />} />
-
-        <Route path="/category" element={<Category />} />
-
-        <Route path="/shope" element={<ShopeProduct />} />
-
-        <Route path="/sale" element={<Sale />} />
-
-        <Route path="/user" element={<User />} />
-
-        <Route path="/sales" element={<Sales />} />
-
-        <Route path="/store" element={<Store />} />
-
-        <Route path="/requestHistory" element={<RequestHistory />} />
-        
-        <Route path="/attachment" element={<Order />} />
-        
-        <Route path="/profile" element={<Profile />} />
-
-        <Route path="/report" element={<Report />} />
-        
-        <Route path="/setting" element={<Setting />} />
-
-        <Route path="/change" element={<Setting />} />
-
-        <Route path="/login" element={<Login />} />
-
-      </Routes>
-    </Router>
-  );
-};
-
-export default RoutePage;
