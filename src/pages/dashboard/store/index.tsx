@@ -4,6 +4,7 @@ import { Box, Container, Unstable_Grid2 as Grid } from '@mui/material';
 //import { TotalOrders } from '../../../components/scensComponents/dashboard/TotalOrders';
 import { Helmet } from 'react-helmet';
 import { StoreProducts } from '../../../components/pageComponents/dashboard/store/TotalProducts';
+import { TotalOrders } from '../../../components/pageComponents/dashboard/TotalOrders';
 
 
 
@@ -43,7 +44,7 @@ export const StoreDashboard = () => (
             sm={6}
             lg={6}
           >
-            <StoreProducts
+            <TotalOrders
               sx={{ height: '100%' }}
               value="$15k"
             />

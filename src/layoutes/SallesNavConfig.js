@@ -1,5 +1,6 @@
-import Iconify from "../components/Iconify";
 import React from 'react';
+import Iconify from "../components/Iconify";
+
 const getIcon = (name) => <Iconify icon={name} width={22} height={22} color="#3c44b1" />;
 
 export const SallesNavConfig = [
@@ -11,7 +12,6 @@ export const SallesNavConfig = [
   {
     title: 'Profile',
     path: 'profile',
-
     icon: getIcon('iconamoon:profile-fill'),
   },
   {

@@ -1,9 +1,7 @@
-//import React from 'react';
-//import { IconifyIcon } from '@iconify/react';
-
 const getIcon = (name) => ({
   icon: name,
 });
+
 export const StoreNavConfig = [
   {
     title: 'Dashboard',
