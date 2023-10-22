@@ -1,185 +1,78 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { gql, useApolloClient, useMutation } from "@apollo/client";
-import * as Yup from "yup";
-import { Formik, Form, Field, FieldProps, ErrorMessage } from "formik";
-import { Button, CircularProgress, TextField } from "@mui/material";
-import { ME_QUERY } from "../../../graphql/Profile";
-import { UserContext } from "../../../auth/UserContext";
+import React, { useState, useContext } from 'react';
+import { useMutation } from '@apollo/client';
+import { LOGIN_MUTATION } from '../../../graphql/Login';
+import { UserContext } from '../../../auth/UserContext';
+import { useNavigate } from 'react-router-dom';
+import { TextField, Button, Box, Container, CircularProgress } from '@mui/material';
 
-interface LoginFormValues {
+interface LoginInput {
   username: string;
   password: string;
 }
 
-const LOGIN_MUTATION = gql`
-  mutation Login($username: String!, $password: String!) {
-    login(input: { username: $username, password: $password })
-  }
-`;
-
-const LoginForm: React.FC = () => {
-  const client = useApolloClient();
-  const navigate = useNavigate();
-  const [errors, setErrors] = useState<{ username?: string }>({});
+const Login: React.FC = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const [createLogin] = useMutation(LOGIN_MUTATION, {
-    refetchQueries: [{ query: ME_QUERY }],
-  });
-
+  const [loginMutation, { error }] = useMutation(LOGIN_MUTATION);
   const { setCurrentUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      const fetchUser = async () => {
-        try {
-          const { data } = await client.query({
-            query: ME_QUERY,
-          });
-          const userData = data.me;
-          setCurrentUser(userData);
-        } catch (error) {
-          console.log("Error fetching user:", error);
-        }
-      };
-
-      fetchUser();
-    }
-  }, [client, setCurrentUser]);
-
-  const initialValues: LoginFormValues = {
-    username: "",
-    password: "",
-  };
-
-  const validationSchema = Yup.object({
-    username: Yup.string().required("Username is required"),
-    password: Yup.string()
-      .max(20, "Must be 20 characters or less")
-      .required("Password is required"),
-  });
-
-  const handleLogin = async (values: LoginFormValues) => {
+  const handleLogin = async () => {
     setLoading(true);
+    const input: LoginInput = { username, password };
     try {
-      const response = await createLogin({
-        variables: values,
-      });
-      localStorage.setItem("token", response.data.login);
-      const { data } = await client.query({
-        query: ME_QUERY,
-      });
-      const userData = data.me;
-      setCurrentUser(userData);
-      localStorage.setItem("currentUser", JSON.stringify(userData));
-      navigate("/");
+      const { data } = await loginMutation({ variables: { input } });
+      const token = data.login.token;
+      const user = data.login.user;
+      localStorage.setItem('token', token);
+      setCurrentUser(user);
+      const { firstName, lastName, email, role } = user;
+      setLoading(false);
+      navigate('/');
+      console.log('Logged in successfully:', { firstName, lastName, email, role });
     } catch (error) {
-      console.log("Login failed:", error);
-      setErrors({ username: "error" });
-    } finally {
+      console.error('Login error:', error);
       setLoading(false);
     }
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
-      }}
-    >
-      <div
-        style={{
-          width: "400px",
-          padding: "20px",
-          border: "1px solid #ddd",
-          borderRadius: "5px",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
-        }}
-      >
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "20px",
-            color: "#3c44b1",
-          }}
+    <Container maxWidth="sm" style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Box p={4} boxShadow={3} bgcolor="white">
+        <h2>Login</h2>
+        {error && <p>Error: {error.message}</p>}
+        <TextField
+          variant="outlined"
+          label="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          variant="outlined"
+          label="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          fullWidth
+          margin="normal"
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          onClick={handleLogin}
+          disabled={loading}
+          style={{ marginTop: '1rem' }}
         >
-          SEBLEWONGALE ENGINEERING
-        </h2>
-        <h3
-          style={{
-            textAlign: "center",
-            marginBottom: "20px",
-            color: "green",
-          }}
-        >
-          Login
-        </h3>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          onSubmit={handleLogin}
-        >
-          <Form
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Field name="username">
-              {({ field }: FieldProps<string>) => (
-                <TextField
-                  {...field}
-                  label="Username"
-                  variant="outlined"
-                  margin="normal"
-                />
-              )}
-            </Field>
-
-            <Field name="password">
-              {({ field }: FieldProps<string>) => (
-                <TextField
-                  {...field}
-                  label="Password"
-                  type="password"
-                  variant="outlined"
-                  margin="normal"
-                />
-              )}
-            </Field>
-            <ErrorMessage
-              name="password"
-              component="div"
-              className="error-message"
-            />
-
-            {errors.username && (
-              <div className="error-message">{errors.username}</div>
-            )}
-
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              style={{ margin: "10px auto", width: "100%" }}
-              disabled={loading}
-            >
-              {loading ? (
-                <CircularProgress size={24} color="inherit" />
-              ) : (
-                "Login"
-                         )}
-            </Button>
-          </Form>
-        </Formik>
-      </div>
-    </div>
+          {loading ? <CircularProgress size={20} /> : 'Login'}
+        </Button>
+      </Box>
+    </Container>
   );
 };
 
-export default LoginForm;
+export default Login;

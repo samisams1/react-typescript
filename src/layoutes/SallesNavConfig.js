@@ -40,6 +40,11 @@ export const SallesNavConfig = [
     icon: getIcon('simple-icons:shopee'),
 },
 {
+  title: 'Report',
+  path: 'report',
+  icon: getIcon('mdi:report-areaspline-variant'),
+},
+{
     title: 'Setting',
     path: 'setting',
     icon: getIcon('uiw:setting'),

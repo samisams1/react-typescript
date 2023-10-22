@@ -4,14 +4,14 @@ import { Helmet } from 'react-helmet';
 import { StoreProducts } from '../../../components/pageComponents/dashboard/store/TotalProducts';
 import { TotalProducts } from '../../../components/pageComponents/dashboard/TotalProducts';
 import { TotalOrders } from '../../../components/pageComponents/dashboard/TotalOrders';
-import { TotalUser } from '../../../components/pageComponents/dashboard/TotalUsers';
+//import { TotalUser } from '../../../components/pageComponents/dashboard/TotalUsers';
 import { ShopeProducts } from '../../../components/pageComponents/dashboard/sale/TotalProducts';
 
 export const AdminDashboard = () => (
   <>
     <Helmet>
       <title>
-        Overview | Inventory
+        Dashboard | Seblewongale
       </title>
     </Helmet>
     <Box
@@ -70,37 +70,6 @@ export const AdminDashboard = () => (
               value="$15k"
             />
           </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <TotalOrders
-              difference={12}
-              positive
-              sx={{ height: '100%' }}
-              value="$24k"
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            sm={6}
-            lg={3}
-          >
-            <TotalUser
-              difference={16}
-              positive={false}
-              sx={{ height: '100%' }}
-              value="1.6k"
-            />
-          </Grid>
-          <Grid
-            xs={12}
-            lg={12}
-          >
-           SaleList
-          </Grid>
-         
         </Grid>
       </Container>
     </Box>

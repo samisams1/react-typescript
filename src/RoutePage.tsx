@@ -20,6 +20,7 @@ import { Store } from './components/pageComponents/store';
 import Login from './pages/login/Login';
 import NotFoundPage from './pages/NotFoundPage';
 import DashboardLayout from './layoutes/DashboardLayout';
+import { User } from './pages/User';
 export default function RoutePage() {
 
     return useRoutes([
@@ -34,7 +35,7 @@ export default function RoutePage() {
               { path: '/category', element: <ProtectedRoute element={<Category />} /> },
               { path: '/shope', element: <ProtectedRoute  element={<ShopeProduct />} /> },
               { path: '/sale', element: <ProtectedRoute  element={<Sale />} /> },
-             // { path: '/user', element: <ProtectedRoute  element={< />} /> },
+              { path: '/user', element: <ProtectedRoute  element={<User />} /> },
               { path: '/store', element: <ProtectedRoute  element={<Store />} /> },
               { path: '/sales', element: <ProtectedRoute element={<Sales />} /> },
               { path: '/requestHistory', element: <ProtectedRoute element={<RequestHistory />} /> },
